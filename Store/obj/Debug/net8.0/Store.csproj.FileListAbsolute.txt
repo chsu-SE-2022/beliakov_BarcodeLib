@@ -15,3 +15,4 @@
 /home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Store/obj/Debug/net8.0/refint/Store.dll
 /home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Store/obj/Debug/net8.0/Store.pdb
 /home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Store/obj/Debug/net8.0/ref/Store.dll
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Store/obj/Debug/net8.0/Store.sourcelink.json

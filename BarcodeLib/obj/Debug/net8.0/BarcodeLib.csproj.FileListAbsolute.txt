@@ -9,3 +9,4 @@
 /home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/refint/BarcodeLib.dll
 /home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/BarcodeLib.pdb
 /home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/ref/BarcodeLib.dll
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/BarcodeLib.sourcelink.json

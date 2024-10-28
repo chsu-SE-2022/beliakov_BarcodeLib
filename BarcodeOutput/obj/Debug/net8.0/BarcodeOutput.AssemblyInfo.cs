@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BarcodeOutput")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae509cd7f0292f8efe5514ffae5dc0321155c0ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("BarcodeOutput")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BarcodeOutput")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

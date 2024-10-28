@@ -20,3 +20,4 @@
 /home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeOutput/bin/Debug/net8.0/Products.pdb
 /home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeOutput/bin/Debug/net8.0/Store.dll
 /home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeOutput/bin/Debug/net8.0/Store.pdb
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeOutput/obj/Debug/net8.0/BarcodeOutput.sourcelink.json

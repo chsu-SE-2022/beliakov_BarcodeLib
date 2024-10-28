@@ -5,11 +5,13 @@ namespace Store;
 
 public class Window
 {
-    private static int CurrentId = 1;
+    private static int CurrentId = 0;
 
     private int id;
+    
+    private Product?[] Products { get; set; }
 
-    private int Id
+    public int Id
     {
         get => id;
         set
@@ -35,8 +37,6 @@ public class Window
         return new Window(count);
     }
 
-    private Product?[] Products { get; set; }
-
     public Product? this[int index]
     {
         get
@@ -47,6 +47,7 @@ public class Window
         set
         {
             if (index < 0 || index >= Products.Length) return;
+            value?.ChangeBarcodeText($"{value.Id} {Id} {index}");
             Products[index] = value;
         }
     }
@@ -73,6 +74,11 @@ public class Window
     public void Remove(int idx)
     {
         Products[idx] = null;
+    }
+
+    public void SwapByIndex(int first, int second)
+    {
+        (Products[first], Products[second]) = (Products[second], Products[first]);
     }
 
     public Product? FindById(int productId)
@@ -124,11 +130,11 @@ public class Window
         {
             if (p != null)
             {
-                sb.AppendLine(p.ToString());
+                sb.AppendLine($"Product position: {Array.IndexOf(Products, p) + 1}\n" + p.ToString());
             }
             else
             {
-                sb.AppendLine($"Empty\n");
+                sb.AppendLine($"Product position: {Array.IndexOf(Products, p) + 1}: Empty\n");
             }
         }
         return sb.ToString();
