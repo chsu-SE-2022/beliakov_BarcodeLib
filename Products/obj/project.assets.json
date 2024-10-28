@@ -1,0 +1,95 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "BarcodeLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BarcodeLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BarcodeLib.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BarcodeLib/1.0.0": {
+      "type": "project",
+      "path": "../BarcodeLib/BarcodeLib.csproj",
+      "msbuildProject": "../BarcodeLib/BarcodeLib.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "BarcodeLib >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/chiffa/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/Products.csproj",
+      "projectName": "Products",
+      "projectPath": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/Products.csproj",
+      "packagesPath": "/home/chiffa/.nuget/packages/",
+      "outputPath": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/chiffa/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/BarcodeLib.csproj": {
+              "projectPath": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/BarcodeLib.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.8, 8.0.8]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

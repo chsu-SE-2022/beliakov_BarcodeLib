@@ -1,0 +1,139 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "BarcodeLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BarcodeLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BarcodeLib.dll": {}
+        }
+      },
+      "Products/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BarcodeLib": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Products.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Products.dll": {}
+        }
+      },
+      "Store/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Products": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Store.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Store.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BarcodeLib/1.0.0": {
+      "type": "project",
+      "path": "../BarcodeLib/BarcodeLib.csproj",
+      "msbuildProject": "../BarcodeLib/BarcodeLib.csproj"
+    },
+    "Products/1.0.0": {
+      "type": "project",
+      "path": "../Products/Products.csproj",
+      "msbuildProject": "../Products/Products.csproj"
+    },
+    "Store/1.0.0": {
+      "type": "project",
+      "path": "../Store/Store.csproj",
+      "msbuildProject": "../Store/Store.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "BarcodeLib >= 1.0.0",
+      "Products >= 1.0.0",
+      "Store >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/chiffa/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeOutput/BarcodeOutput.csproj",
+      "projectName": "BarcodeOutput",
+      "projectPath": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeOutput/BarcodeOutput.csproj",
+      "packagesPath": "/home/chiffa/.nuget/packages/",
+      "outputPath": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeOutput/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/chiffa/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/BarcodeLib.csproj": {
+              "projectPath": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/BarcodeLib.csproj"
+            },
+            "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/Products.csproj": {
+              "projectPath": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/Products.csproj"
+            },
+            "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Store/Store.csproj": {
+              "projectPath": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Store/Store.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.8, 8.0.8]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

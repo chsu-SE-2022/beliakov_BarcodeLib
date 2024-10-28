@@ -1,0 +1,11 @@
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/BarcodeLib.GeneratedMSBuildEditorConfig.editorconfig
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/BarcodeLib.AssemblyInfoInputs.cache
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/BarcodeLib.AssemblyInfo.cs
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/BarcodeLib.csproj.CoreCompileInputs.cache
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/bin/Debug/net8.0/BarcodeLib.deps.json
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/bin/Debug/net8.0/BarcodeLib.dll
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/bin/Debug/net8.0/BarcodeLib.pdb
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/BarcodeLib.dll
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/refint/BarcodeLib.dll
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/BarcodeLib.pdb
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/BarcodeLib/obj/Debug/net8.0/ref/BarcodeLib.dll

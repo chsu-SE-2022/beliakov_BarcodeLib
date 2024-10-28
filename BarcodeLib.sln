@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeLib", "BarcodeLib\BarcodeLib.csproj", "{AD9E59A1-12FE-480F-AFD8-35AC6CA9D9AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeOutput", "BarcodeOutput\BarcodeOutput.csproj", "{268DCEF9-25C8-4C93-8C51-3A967757683C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products", "Products\Products.csproj", "{76F68E17-FFCA-4294-9B57-9AB3B9E8E211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store\Store.csproj", "{F660468B-F46D-4BBD-8CF2-D0A716E3A1FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD9E59A1-12FE-480F-AFD8-35AC6CA9D9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9E59A1-12FE-480F-AFD8-35AC6CA9D9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9E59A1-12FE-480F-AFD8-35AC6CA9D9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9E59A1-12FE-480F-AFD8-35AC6CA9D9AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268DCEF9-25C8-4C93-8C51-3A967757683C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268DCEF9-25C8-4C93-8C51-3A967757683C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268DCEF9-25C8-4C93-8C51-3A967757683C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268DCEF9-25C8-4C93-8C51-3A967757683C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76F68E17-FFCA-4294-9B57-9AB3B9E8E211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76F68E17-FFCA-4294-9B57-9AB3B9E8E211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76F68E17-FFCA-4294-9B57-9AB3B9E8E211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76F68E17-FFCA-4294-9B57-9AB3B9E8E211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F660468B-F46D-4BBD-8CF2-D0A716E3A1FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F660468B-F46D-4BBD-8CF2-D0A716E3A1FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F660468B-F46D-4BBD-8CF2-D0A716E3A1FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F660468B-F46D-4BBD-8CF2-D0A716E3A1FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

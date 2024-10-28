@@ -1,0 +1,15 @@
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/bin/Debug/net8.0/Products.deps.json
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/bin/Debug/net8.0/Products.dll
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/bin/Debug/net8.0/Products.pdb
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/bin/Debug/net8.0/BarcodeLib.dll
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/bin/Debug/net8.0/BarcodeLib.pdb
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/Products.csproj.AssemblyReference.cache
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/Products.GeneratedMSBuildEditorConfig.editorconfig
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/Products.AssemblyInfoInputs.cache
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/Products.AssemblyInfo.cs
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/Products.csproj.CoreCompileInputs.cache
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/Products.csproj.CopyComplete
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/Products.dll
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/refint/Products.dll
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/Products.pdb
+/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Products/obj/Debug/net8.0/ref/Products.dll

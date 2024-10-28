@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nvkU2edc+7s=",
+  "success": true,
+  "projectFilePath": "/home/chiffa/Dev/Solutions/CSharp/BarcodeLib/Store/Store.csproj",
+  "expectedPackageFiles": [
+    "/home/chiffa/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.8/microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
