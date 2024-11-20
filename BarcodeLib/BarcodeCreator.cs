@@ -4,7 +4,7 @@ namespace BarcodeLib;
 
 public static class BarcodeCreator
 {
-    private const int Height = 10;
+    private const int Height = 4;
 
     private const string Frame = "0000";
 

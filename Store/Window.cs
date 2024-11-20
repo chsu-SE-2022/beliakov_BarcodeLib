@@ -3,138 +3,158 @@ using Products;
 
 namespace Store;
 
-public class Window
+public class Window<T> : IWindow<T> where T : class, IProduct
 {
-    private static int CurrentId = 0;
+    protected static int CurrentId = 0;
 
-    private int id;
-    
-    private Product?[] Products { get; set; }
+    private int _id;
+
+    public T?[] ProductList { get; set; }
 
     public int Id
     {
-        get => id;
+        get => _id;
         set
         {
-            id = value;
+            _id = value;
             CurrentId = value + 1;
-            foreach (var product in Products)
-            {
-                product?.ChangeBarcodeText($"{product.Id} {value} {Array.IndexOf(Products, product)}");
-            }
+            UpdateAllBarcodes();
+
         }
     }
 
-    private Window(int count)
+    protected Window(int count)
     {
-        Products = new Product?[count];
+        ProductList = new T?[count];
         Id = CurrentId;
         CurrentId += 1;
     }
 
-    public static implicit operator Window(int count)
+    public static implicit operator Window<T>(int count)
     {
-        return new Window(count);
+        return new Window<T>(count);
     }
 
-    public Product? this[int index]
+    public static implicit operator Window<T>((int count, int id) tuple)
+    {
+        CurrentId = tuple.id;
+        return new Window<T>(tuple.count);
+    }
+
+    public T? this[int index]
     {
         get
         {
-            if (index < 0 || index >= Products.Length) return null;
-            return Products[index];
+            if (index < 0 || index >= ProductList.Length) return null;
+            return ProductList[index];
         }
         set
         {
-            if (index < 0 || index >= Products.Length) return;
-            value?.ChangeBarcodeText($"{value.Id} {Id} {index}");
-            Products[index] = value;
+            if (index < 0 || index >= ProductList.Length) return;
+            ProductList[index] = value;
+            ChangeBarcodeText(value, index);
         }
     }
 
-    public void Add(Product product)
+    protected void UpdateAllBarcodes()
     {
-        int firstEmpty = Array.FindIndex(Products, (pr) => pr == null);
-        product.ChangeBarcodeText($"{product.Id} {Id} {firstEmpty}");
-        Products[firstEmpty] = product;
+        foreach (var product in ProductList)
+        {
+            ChangeBarcodeText(product, Array.IndexOf(ProductList, product));
+        }
+    }
+
+    protected void ChangeBarcodeText(T? value, int index)
+    {
+        if (value == null) return;
+        value.Barcode.InitialString = ($"{value.Id} {Id} {index}");
+    }
+
+    public void Push(T product)
+    {
+        int firstEmpty = Array.FindIndex(ProductList, (pr) => pr == null);
+        this[firstEmpty] = product;
 
     }
 
-    public void Insert(int index, Product product)
+    public void Insert(int index, T product)
     {
-        product.ChangeBarcodeText($"{product.Id} {Id} {index}");
-        Products[index] = product;
+        this[index] = product;
     }
 
     public void Pop()
     {
-        Products[0] = null;
+        this[0] = default(T);
     }
 
     public void Remove(int idx)
     {
-        Products[idx] = null;
+        this[idx] = default(T);
     }
 
     public void SwapByIndex(int first, int second)
     {
-        (Products[first], Products[second]) = (Products[second], Products[first]);
+        (this[first], this[second]) = (this[second], this[first]);
     }
 
-    public Product? FindById(int productId)
+    public T? FindById(int productId)
     {
-        return Array.Find(Products, (pr) => pr?.Id == productId);
+        return Array.Find(ProductList, (pr) => pr?.Id == productId);
     }
 
-    public Product? FindByName(string productName)
+    public T? FindByName(string productName)
     {
-        return Array.Find(Products, (pr) => pr?.Name == productName);
+        return Array.Find(ProductList, (pr) => pr?.Name == productName);
     }
 
-    private int CompareById(Product? lhs, Product? rhs)
-    {
-        if (lhs is null && rhs is null)
-        {
-            return 0;
-        }
-        else if (lhs is null) return 1;
-        else if (rhs is null) return -1;
-        else return lhs.Id == rhs.Id ? 0 : 1;
-    }
-
-    private int CompareByName(Product? lhs, Product? rhs)
+    private int CompareById(T? lhs, T? rhs)
     {
         if (lhs is null && rhs is null)
         {
             return 0;
         }
-        else if (lhs is null) return 1;
-        else if (rhs is null) return -1;
-        else return lhs.Name == rhs.Name ? 0 : 1;
+        if (lhs is null) return 1;
+        if (rhs is null) return -1;
+        return lhs.Id == rhs.Id ? 0 : 1;
+    }
+
+    private int CompareByName(T? lhs, T? rhs)
+    {
+        if (lhs is null && rhs is null)
+        {
+            return 0;
+        }
+        if (lhs is null) return 1;
+        if (rhs is null) return -1;
+        return lhs.Name == rhs.Name ? 0 : 1;
     }
 
     public void SortById()
     {
-        Array.Sort(Products, CompareById);
+        Array.Sort(ProductList, CompareByName);
+        UpdateAllBarcodes();
     }
     public void SortByName()
     {
-        Array.Sort(Products, CompareByName);
+        Array.Sort(ProductList, CompareByName);
+        UpdateAllBarcodes();
     }
 
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
+        sb.AppendLine("".PadLeft(80, '='));
+
         sb.AppendLine($"Id: {Id}");
-        foreach (var p in Products)
+        foreach (var p in ProductList)
         {
             if (p != null)
             {
-                sb.AppendLine($"Product position: {Array.IndexOf(Products, p) + 1}\n" + p.ToString());
+                sb.AppendLine($"Product position: {Array.IndexOf(ProductList, p) + 1}\n" + p.ToString());
             }
             else
             {
-                sb.AppendLine($"Product position: {Array.IndexOf(Products, p) + 1}: Empty\n");
+                sb.AppendLine($"Product position: {Array.IndexOf(ProductList, p) + 1}: Empty\n");
             }
         }
         return sb.ToString();
