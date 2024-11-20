@@ -7,6 +7,10 @@ public class Window<T> : IWindow<T> where T : class, IProduct
 {
     protected static int CurrentId = 0;
 
+    public delegate void OnUpdateDelegate(Window<T> w);
+
+    public OnUpdateDelegate OnUpdate {get; set;}
+
     private int _id;
 
     public T?[] ProductList { get; set; }
@@ -18,6 +22,7 @@ public class Window<T> : IWindow<T> where T : class, IProduct
         {
             _id = value;
             CurrentId = value + 1;
+            OnUpdate(value);
             UpdateAllBarcodes();
 
         }
@@ -25,6 +30,7 @@ public class Window<T> : IWindow<T> where T : class, IProduct
 
     protected Window(int count)
     {
+        OnUpdate = window => { };
         ProductList = new T?[count];
         Id = CurrentId;
         CurrentId += 1;
@@ -96,15 +102,19 @@ public class Window<T> : IWindow<T> where T : class, IProduct
     {
         (this[first], this[second]) = (this[second], this[first]);
     }
+    public T? Find(Predicate<T?> func)
+    {
+        return Array.Find(ProductList, func);
+    }
 
     public T? FindById(int productId)
     {
-        return Array.Find(ProductList, (pr) => pr?.Id == productId);
+        return Find((pr) => pr?.Id == productId);
     }
 
     public T? FindByName(string productName)
     {
-        return Array.Find(ProductList, (pr) => pr?.Name == productName);
+        return Find((pr) => pr?.Name == productName);
     }
 
     private int CompareById(T? lhs, T? rhs)
@@ -128,16 +138,20 @@ public class Window<T> : IWindow<T> where T : class, IProduct
         if (rhs is null) return -1;
         return lhs.Name == rhs.Name ? 0 : 1;
     }
+    public void Sort(Comparison<T?> compare)
+    {
+        Array.Sort(ProductList, compare);
+        UpdateAllBarcodes();
+
+    }
 
     public void SortById()
     {
-        Array.Sort(ProductList, CompareByName);
-        UpdateAllBarcodes();
+        Sort(CompareById);
     }
     public void SortByName()
     {
-        Array.Sort(ProductList, CompareByName);
-        UpdateAllBarcodes();
+        Sort(CompareByName);
     }
 
     public override string ToString()

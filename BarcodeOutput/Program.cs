@@ -9,7 +9,6 @@ class Program
     static void Main(string[] args)
     {
         TestLab3();
-
     }
 
     static void TestLab4()
