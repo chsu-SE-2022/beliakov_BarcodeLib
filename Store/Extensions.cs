@@ -4,8 +4,8 @@ namespace Store;
 
 public static class Extensions
 {
-    public static void OnUpdate<T>(this T product, IWindow<T> window) where T : Product
+    public static void OnProductIdUpdate<T>(this T product, IWindow<T> window) where T : IProduct
     {
-        Console.WriteLine($"Window: {product.Id}");
+        product.Barcode.InitialString = ($"{product.Id} {window.Id} {window.IndexOfById(product.Id)}");
     }
 }

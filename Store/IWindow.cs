@@ -19,6 +19,10 @@ public interface IWindow<T> where T : IProduct
 
     public void SwapByIndex(int first, int second);
 
+    public int IndexOf(Predicate<T>? predicate);
+
+    public int IndexOfById(int id);
+
     public T? FindById(int productId);
 
     public T? FindByName(string productName);

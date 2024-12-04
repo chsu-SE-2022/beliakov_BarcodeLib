@@ -8,7 +8,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        REPL();
+        // REPL();
+        TestLab4();
     }
 
     static void REPL()
@@ -156,8 +157,6 @@ class Program
         {
             w.Push(product);
         }
-
-        w.OnUpdate = Console.WriteLine;
         w.Id++;
         w.Id++;
         w.Id++;

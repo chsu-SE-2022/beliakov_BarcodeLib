@@ -8,23 +8,16 @@ public abstract class Product : IProduct
     protected string? Type;
     public event EventHandler<IdChangeArg>? OnIdChanged;
 
-    private IdChangeArg? OnIdChangeArg { get; set; }
-
-
     public int Id
     {
         get => id;
         set
         {
             if (value == id) return;
-            OnIdChangeArg.OldId = OnIdChangeArg.NewId;
-            OnIdChangeArg.NewId = value;
-            if (OnIdChanged != null)
-            {
-                OnIdChanged.Invoke(this, OnIdChangeArg);
-            }
+            IdChangeArg args = new() { OldId = id, NewId = value };
             id = value;
             Barcode.InitialString = id.ToString();
+            OnIdChanged?.Invoke(this, args);
         }
     }
     public string Name { get; protected set; }
@@ -34,11 +27,6 @@ public abstract class Product : IProduct
 
     protected Product(int id, string name)
     {
-        OnIdChangeArg = new IdChangeArg
-        {
-            OldId = null,
-            NewId = id
-        };
         this.id = id;
         Name = name;
     }

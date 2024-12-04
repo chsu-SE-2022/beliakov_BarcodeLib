@@ -3,18 +3,23 @@ using Products;
 
 namespace Store;
 
+
+
 public class Window<T> : IWindow<T> where T : class, IProduct
 {
+
+    public delegate void OnWindowIdUpdate(IWindow<T> window);
+
     protected static int CurrentId = 0;
 
-    public Action<Window<T>> OnUpdate {get; set;}
+    private OnWindowIdUpdate _onWindowIdUpdate;
 
-    public void OnIdChangeHandler(object? sender, IdChangeArg args)
+    private void OnIdChangeHandler(object? sender, IdChangeArg args)
     {
-        Console.WriteLine("OnIdChangeHandler");
+        // Console.WriteLine($"Id changed from {args.OldId} to {args.NewId}");
         if (args.NewId != null && sender?.GetType() == typeof(T))
         {
-            ChangeBarcodeText((T)sender, args.NewId.Value);
+            ((T)sender).OnProductIdUpdate(this);
         }
     }
 
@@ -29,15 +34,12 @@ public class Window<T> : IWindow<T> where T : class, IProduct
         {
             _id = value;
             CurrentId = value + 1;
-            OnUpdate(this);
-            UpdateAllBarcodes();
-
+            _onWindowIdUpdate?.Invoke(this);
         }
     }
 
-    protected Window(int count)
+    private Window(int count)
     {
-        OnUpdate = window => { };
         ProductList = new T?[count];
         Id = CurrentId;
         CurrentId += 1;
@@ -59,7 +61,15 @@ public class Window<T> : IWindow<T> where T : class, IProduct
         get
         {
             if (index < 0 || index >= ProductList.Length) return null;
-            return ProductList[index];
+            var ret = ProductList[index];
+            if (ret != null)
+            {
+                ret.OnIdChanged -= OnIdChangeHandler;
+                _onWindowIdUpdate -= ret.OnProductIdUpdate;
+            }
+
+            ProductList[index] = null;
+            return ret;
         }
         set
         {
@@ -67,25 +77,25 @@ public class Window<T> : IWindow<T> where T : class, IProduct
             if (value != null)
             {
                 value.OnIdChanged += OnIdChangeHandler;
+                _onWindowIdUpdate += value.OnProductIdUpdate;
             };
             ProductList[index] = value;
-            // ChangeBarcodeText(value, index);
         }
     }
+    //
+    // protected void OnWindowIdUpdate()
+    // {
+    //     foreach (var product in ProductList)
+    //     {
+    //         product?.OnProductIdUpdate(this);
+    //     }
+    // }
 
-    protected void UpdateAllBarcodes()
-    {
-        foreach (var product in ProductList)
-        {
-            ChangeBarcodeText(product, Array.IndexOf(ProductList, product));
-        }
-    }
-
-    protected void ChangeBarcodeText(T? value, int index)
-    {
-        if (value == null) return;
-        value.Barcode.InitialString = ($"{value.Id} {Id} {index}");
-    }
+    // protected void ChangeBarcodeText(T? value, int index)
+    // {
+    //     if (value == null) return;
+    //     value.Barcode.InitialString = ($"{value.Id} {Id} {index}");
+    // }
 
     public void Push(T product)
     {
@@ -101,18 +111,29 @@ public class Window<T> : IWindow<T> where T : class, IProduct
 
     public void Pop()
     {
-        this[0] = default(T);
+        Remove(0);
     }
 
     public void Remove(int idx)
     {
-        this[idx] = default(T);
+        this[idx] = default;
     }
 
     public void SwapByIndex(int first, int second)
     {
         (this[first], this[second]) = (this[second], this[first]);
     }
+
+    public int IndexOf(Predicate<T>? predicate)
+    {
+        return Array.IndexOf(ProductList, predicate);
+    }
+
+    public int IndexOfById(int id)
+    {
+        return IndexOf(pr => pr?.Id == id);
+    }
+
     public T? Find(Predicate<T?> func)
     {
         return Array.Find(ProductList, func);
@@ -152,7 +173,7 @@ public class Window<T> : IWindow<T> where T : class, IProduct
     public void Sort(Comparison<T?> compare)
     {
         Array.Sort(ProductList, compare);
-        UpdateAllBarcodes();
+        _onWindowIdUpdate(this);
     }
 
     public void SortById()
