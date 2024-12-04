@@ -12,7 +12,6 @@ public sealed class Switch : Product, IProduct
 
     public override void ChangeBarcodeText(string text)
     {
-        return;
     }
 
     public Switch(int id, string name, string model, string manufacturer, int deviceCount, string barcodeString) : base(id, name)

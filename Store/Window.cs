@@ -9,6 +9,15 @@ public class Window<T> : IWindow<T> where T : class, IProduct
 
     public Action<Window<T>> OnUpdate {get; set;}
 
+    public void OnIdChangeHandler(object? sender, IdChangeArg args)
+    {
+        Console.WriteLine("OnIdChangeHandler");
+        if (args.NewId != null && sender?.GetType() == typeof(T))
+        {
+            ChangeBarcodeText((T)sender, args.NewId.Value);
+        }
+    }
+
     private int _id;
 
     public T?[] ProductList { get; set; }
@@ -55,8 +64,12 @@ public class Window<T> : IWindow<T> where T : class, IProduct
         set
         {
             if (index < 0 || index >= ProductList.Length) return;
+            if (value != null)
+            {
+                value.OnIdChanged += OnIdChangeHandler;
+            };
             ProductList[index] = value;
-            ChangeBarcodeText(value, index);
+            // ChangeBarcodeText(value, index);
         }
     }
 
@@ -77,6 +90,7 @@ public class Window<T> : IWindow<T> where T : class, IProduct
     public void Push(T product)
     {
         int firstEmpty = Array.FindIndex(ProductList, (pr) => pr == null);
+        product.OnIdChanged += OnIdChangeHandler;
         this[firstEmpty] = product;
 
     }

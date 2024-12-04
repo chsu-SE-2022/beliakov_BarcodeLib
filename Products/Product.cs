@@ -6,7 +6,8 @@ public abstract class Product : IProduct
 {
     private int id;
     protected string? Type;
-    public EventHandler<IdChangeArg> OnIdChanged { get; set; }
+    public event EventHandler<IdChangeArg>? OnIdChanged;
+
     private IdChangeArg? OnIdChangeArg { get; set; }
 
 
@@ -18,26 +19,26 @@ public abstract class Product : IProduct
             if (value == id) return;
             OnIdChangeArg.OldId = OnIdChangeArg.NewId;
             OnIdChangeArg.NewId = value;
-            OnIdChanged.Invoke(this, OnIdChangeArg);
+            if (OnIdChanged != null)
+            {
+                OnIdChanged.Invoke(this, OnIdChangeArg);
+            }
             id = value;
             Barcode.InitialString = id.ToString();
         }
     }
     public string Name { get; protected set; }
     public abstract IBarcode Barcode { get; }
-    event EventHandler<IdChangeArg>? IProduct.OnIdChanged
-    {
-        add => throw new NotImplementedException();
-        remove => throw new NotImplementedException();
-    }
 
     public virtual void ChangeBarcodeText(string text) => Barcode.InitialString = text;
 
     protected Product(int id, string name)
     {
-        OnIdChangeArg = new IdChangeArg();
-        OnIdChangeArg.OldId = null;
-        OnIdChangeArg.NewId = id;
+        OnIdChangeArg = new IdChangeArg
+        {
+            OldId = null,
+            NewId = id
+        };
         this.id = id;
         Name = name;
     }

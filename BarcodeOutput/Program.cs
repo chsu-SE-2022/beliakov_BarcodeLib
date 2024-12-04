@@ -8,7 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Test();
+        TestLab4();
     }
 
     static void Test()
