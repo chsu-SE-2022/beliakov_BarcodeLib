@@ -90,7 +90,6 @@ public class Window<T> : IWindow<T> where T : class, IProduct
     public void Push(T product)
     {
         int firstEmpty = Array.FindIndex(ProductList, (pr) => pr == null);
-        product.OnIdChanged += OnIdChangeHandler;
         this[firstEmpty] = product;
 
     }
