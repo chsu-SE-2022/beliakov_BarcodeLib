@@ -5,8 +5,10 @@ namespace Products;
 public abstract class Product : IProduct
 {
     private int id;
-
     protected string? Type;
+    public EventHandler<IdChangeArg> OnIdChanged { get; set; }
+    private IdChangeArg? OnIdChangeArg { get; set; }
+
 
     public int Id
     {
@@ -14,17 +16,28 @@ public abstract class Product : IProduct
         set
         {
             if (value == id) return;
+            OnIdChangeArg.OldId = OnIdChangeArg.NewId;
+            OnIdChangeArg.NewId = value;
+            OnIdChanged.Invoke(this, OnIdChangeArg);
             id = value;
             Barcode.InitialString = id.ToString();
         }
     }
     public string Name { get; protected set; }
     public abstract IBarcode Barcode { get; }
+    event EventHandler<IdChangeArg>? IProduct.OnIdChanged
+    {
+        add => throw new NotImplementedException();
+        remove => throw new NotImplementedException();
+    }
 
-    public void ChangeBarcodeText(string text) => Barcode.InitialString = text;
+    public virtual void ChangeBarcodeText(string text) => Barcode.InitialString = text;
 
     protected Product(int id, string name)
     {
+        OnIdChangeArg = new IdChangeArg();
+        OnIdChangeArg.OldId = null;
+        OnIdChangeArg.NewId = id;
         this.id = id;
         Name = name;
     }

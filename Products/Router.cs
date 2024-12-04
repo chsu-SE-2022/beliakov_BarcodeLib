@@ -17,6 +17,7 @@ public class Router : Product
         Barcode = new Barcode(id.ToString());
         base.Type = "Router";
         Model = model;
+
         Price = price;
         Bandwidth = bandwidth;
         WifiStandards = wifiStandards;

@@ -9,6 +9,12 @@ public sealed class Switch : Product, IProduct
     public string Model { get; private set; }
     public string Manufacturer { get; private set; }
     public int DeviceCount { get; private set; }
+
+    public override void ChangeBarcodeText(string text)
+    {
+        return;
+    }
+
     public Switch(int id, string name, string model, string manufacturer, int deviceCount, string barcodeString) : base(id, name)
     {
         this.Barcode = new BarcodeRecord(id.ToString());

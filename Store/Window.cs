@@ -7,9 +7,7 @@ public class Window<T> : IWindow<T> where T : class, IProduct
 {
     protected static int CurrentId = 0;
 
-    public delegate void OnUpdateDelegate(Window<T> w);
-
-    public OnUpdateDelegate OnUpdate {get; set;}
+    public Action<Window<T>> OnUpdate {get; set;}
 
     private int _id;
 
@@ -22,7 +20,7 @@ public class Window<T> : IWindow<T> where T : class, IProduct
         {
             _id = value;
             CurrentId = value + 1;
-            OnUpdate(value);
+            OnUpdate(this);
             UpdateAllBarcodes();
 
         }
@@ -142,7 +140,6 @@ public class Window<T> : IWindow<T> where T : class, IProduct
     {
         Array.Sort(ProductList, compare);
         UpdateAllBarcodes();
-
     }
 
     public void SortById()

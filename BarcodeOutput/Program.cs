@@ -8,7 +8,34 @@ class Program
 {
     static void Main(string[] args)
     {
-        TestLab3();
+        Test();
+    }
+
+    static void Test()
+    {
+        var lab4Data = new List<IProduct>()
+        {
+            new Router(10, "FirstR", "FRST", 6000.0m, 120.0m, "Malls"),
+            new Router(11, "SecondR", "SCND", 2.0m, 1.0m, "Calls"),
+            new Router(12, "ThirdR", "THRD", 22000.0m, 140.0m, "Balls"),
+            new Switch(13, "FirstS", "FS", "Navi", 1, "text"),
+            new Switch(14, "SecondS", "SS", "Navi", 1, "text"),
+            new Switch(15, "ThirdS", "TS", "Navi", 1, "text")
+        };
+
+        Window<IProduct> w = (7, 1);
+
+        foreach (var product in lab4Data)
+        {
+            w.Push(product);
+        }
+
+        w.OnUpdate = Console.WriteLine;
+        w.Id++;
+        w.Id++;
+        w.Id++;
+        w.Id++;
+        w.Id++;
     }
 
     static void TestLab4()
