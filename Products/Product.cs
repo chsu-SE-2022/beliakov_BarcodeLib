@@ -1,43 +1,33 @@
 ﻿using BarcodeLib;
 
 namespace Products;
-
-public abstract class Product : IProduct
+/// <summary>
+/// Model-class for all Products (Router, Switch)
+/// </summary>
+/// <param name="id">Integer ID of the product. Supposed to be unique</param>
+/// <param name="name">Basic product name</param>
+public abstract class Product(int id, string name) : IProduct
 {
-    private int id;
+    private int _id = id;
     protected string? Type;
     public event EventHandler<IdChangeArg>? OnIdChanged;
 
     public int Id
     {
-        get => id;
+        get => _id;
         set
         {
-            if (value == id) return;
-            IdChangeArg args = new() { OldId = id, NewId = value };
-            id = value;
-            Barcode.InitialString = id.ToString();
+            if (value == _id) return;
+            IdChangeArg args = new() { OldId = _id, NewId = value };
+            _id = value;
+            Barcode.InitialString = _id.ToString();
             OnIdChanged?.Invoke(this, args);
         }
     }
-    public string Name { get; protected set; }
+    public string Name { get; protected set; } = name;
     public abstract IBarcode Barcode { get; }
 
     public virtual void ChangeBarcodeText(string text) => Barcode.InitialString = text;
-
-    protected Product(int id, string name)
-    {
-        this.id = id;
-        Name = name;
-    }
-
-    // protected Product(int id, string name, bool isRecord)
-    // {
-    //     Barcode = isRecord ? new BarcodeRecord("id") : new Barcode("id");
-    //     Id = id;
-    //     Name = name;
-    // }
-
 
     public override string ToString()
     {

@@ -7,8 +7,7 @@ namespace Store;
 
 public class Window<T> : IWindow<T> where T : class, IProduct
 {
-
-    public delegate void OnWindowIdUpdate(IWindow<T> window);
+    private delegate void OnWindowIdUpdate(IWindow<T> window);
 
     protected static int CurrentId = 0;
 

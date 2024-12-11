@@ -2,33 +2,31 @@ using BarcodeLib;
 
 namespace Products;
 
-public sealed class Switch : Product, IProduct
+public sealed class Switch : Router, IProduct
 {
     IBarcode IProduct.Barcode { get; } = new BarcodeRecord("");
     public override IBarcode Barcode { get; }
     public string Model { get; private set; }
-    public string Manufacturer { get; private set; }
-    public int DeviceCount { get; private set; }
+    private string Manufacturer { get; set; }
+    private int DeviceCount { get; set; }
 
     public override void ChangeBarcodeText(string text)
     {
     }
 
-    public Switch(int id, string name, string model, string manufacturer, int deviceCount, string barcodeString) : base(id, name)
+    public Switch(int id, string name, string model, decimal price, decimal bandwidth, string manufacturer, int deviceCount) 
+        : base(id, name, model, price, bandwidth)
     {
-        this.Barcode = new BarcodeRecord(id.ToString());
-        base.Type = "Switch";
+        Barcode = new BarcodeRecord(id.ToString());
+        Type = "Switch";
         Model = model;
         Manufacturer = manufacturer;
         DeviceCount = deviceCount;
-        // base.Barcode.InitialString = barcodeString;
     }
     public override string ToString()
     {
-        string routerString = $"{Type}:        {Name}\n" +
-                              $"Model:         {Model}\n" +
-                              $"Manufacturer:  {Manufacturer}\n" +
+        string routerString = $"Manufacturer:  {Manufacturer}\n" +
                               $"Device count:  {DeviceCount}\n";
-        return routerString + base.ToString();
+        return base.ToString() + routerString;
     }
 }

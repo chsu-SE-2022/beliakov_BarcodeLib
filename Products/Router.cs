@@ -6,21 +6,19 @@ public class Router : Product
 {
     private decimal Price { get; set; }
     private decimal Bandwidth { get; set; }
-    private string WifiStandards { get; set; }
     private string Model { get; set; }
     public override IBarcode Barcode { get; }
 
 
-    public Router(int id, string name, string model, decimal price, decimal bandwidth, string wifiStandards)
+    public Router(int id, string name, string model, decimal price, decimal bandwidth)
         : base(id, name)
     {
         Barcode = new Barcode(id.ToString());
-        base.Type = "Router";
+        Type = "Router";
         Model = model;
 
         Price = price;
         Bandwidth = bandwidth;
-        WifiStandards = wifiStandards;
     }
 
     public override string ToString()
@@ -28,8 +26,7 @@ public class Router : Product
         string routerString = $"{Type}:        {Name}\n" +
                               $"Model:         {Model}\n" +
                               $"Price:         {Price}\n" +
-                              $"Bandwidth:     {Bandwidth}\n" +
-                              $"Standards:     {WifiStandards}\n";
+                              $"Bandwidth:     {Bandwidth}\n";
         return routerString + base.ToString();
     }
 }
